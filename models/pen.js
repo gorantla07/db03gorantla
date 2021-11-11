@@ -1,8 +1,8 @@
 const mongoose = require("mongoose") 
 const penSchema = mongoose.Schema({ 
- pen_type: String, 
- thickness: Number, 
- cost: Number 
+ pName: String, 
+ pColor: String, 
+ pPrice: Number 
 }) 
  
 module.exports = mongoose.model("pen", 
