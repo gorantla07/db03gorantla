@@ -8,7 +8,7 @@ var pen_controller = require('../controllers/pen');
 router.get('/resource', api_controller.api);
 /// pen ROUTES ///
 // POST request for creating a pen.
-router.post('/resource/pen', pen_controller.pen_create_post);
+router.post('/resource/pen', pen_controller.Pen_create_post);
 // DELETE request to delete pen.
 router.delete('/resource/pen/:id', pen_controller.pen_delete);
 // PUT request to update pen.
