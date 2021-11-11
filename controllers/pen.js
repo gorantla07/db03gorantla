@@ -1,4 +1,4 @@
-var Gas = require('../models/pen');
+var Pen = require('../models/pen');
 // List of all Pens
 exports.pen_list = function (req, res) {
     res.send('NOT IMPLEMENTED: Pen list');
@@ -32,7 +32,7 @@ exports.pen_delete = function (req, res) {
 };
 // Handle Pen update form on PUT.
 exports.pen_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: Gas update PUT' + req.params.id);
+    res.send('NOT IMPLEMENTED: Pen update PUT' + req.params.id);
 };
 
 // List of all Pen
