@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+var pen = require("./models/pen"); 
 
 const connectionString =  
 process.env.MONGO_CON 
@@ -10,8 +12,7 @@ mongoose = require('mongoose');
 mongoose.connect(connectionString,  
 {useNewUrlParser: true, 
 useUnifiedTopology: true});
-
-var pen = require("./models/pen"); 
+ 
 async function recreateDB() {
   // Delete everything
   await pen.deleteMany();
