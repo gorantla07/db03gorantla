@@ -4,6 +4,54 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const connectionString =  
+process.env.MONGO_CON 
+mongoose = require('mongoose'); 
+mongoose.connect(connectionString,  
+{useNewUrlParser: true, 
+useUnifiedTopology: true});
+
+var pen = require("./models/pen"); 
+async function recreateDB() {
+  // Delete everything
+  await pen.deleteMany();
+  let instance1 = new
+  pen({
+    pen_type: "Red",
+    thickness: 1,
+    cost: 10
+  });
+  let instance2 = new
+  pen({
+    pen_type: "Green",
+    thickness: 1,
+    cost: 15
+  });
+  let instance3 = new
+  pen({
+    pen_type: "Orange",
+    thickness: 2,
+    cost: 20
+  });  
+  instance1.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("First object saved")
+  });
+  instance2.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Second object saved")
+  });
+  instance3.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Third object saved")
+  });
+}
+
+let reseed = true;
+if (reseed) {
+  recreateDB();
+}
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var penRouter = require('./routes/pen');
