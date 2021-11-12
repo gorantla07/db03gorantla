@@ -13,3 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+// GET request for one pen. 
+router.get('/pen/:id', pen_controlers.pen_detail); 
+ 
