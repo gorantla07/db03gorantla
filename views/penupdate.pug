@@ -1,0 +1,41 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  - let penid = toShow._id 
+  - let penName = toShow.pName 
+  - let penColor = toShow.pColor 
+  - let penPrice = toShow.pPrice 
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{penid} 
+  - let actionid = "/resource/pen/" + penid 
+  form(id='PenForm', action=actionid, method="PUT") 
+    div.form-group 
+        label.penAttr(for='pName') Pen Name 
+        input#pName(type='text', name='pName',value=penName) 
+    div.form-group 
+        label.penAttr(for='pColor') Pen Color 
+        input#pColor(type='text', name='pColor',value=penColor) 
+    div.form-group 
+        label.penAttr(for='pPrice') Pen Price 
+        input#pPrice(type='number', name='pPrice',value=penPrice) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['PenForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 
