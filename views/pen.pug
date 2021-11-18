@@ -9,11 +9,19 @@ block content
                 td Pen ID
                 td Pen name 
                 td Pen Color 
-                td Pen Price 
+                td Pen Price
+                td Update 
         tbody 
             each pen in pens 
+                - let destination = `dispatch(\"/pen/update?id=${pen._id}\")`
                 tr
                     td #{pen._id}
                     td #{pen.pName}
                     td #{pen.pColor}
                     td #{pen.pPrice}
+                    td
+                      button.btn( class="btn-primary ml-1", onclick= destination) Update
+                script.
+                    function dispatch(path){
+                      window.location.href=path
+                    }
