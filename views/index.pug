@@ -1,13 +1,14 @@
-extends layout
-
-block content
-  h1= title
-  p I did changes to this index pug file.
-  button(type='button', class='btn btn-primary' onClick='update()') Press ME
-  div(id='target') Display 
-  script(type='text/javascript').
-    let client_count=0;
-    function update(){
-      client_count=client_count +1
-      document.getElementById('target').innerHTML=client_count
-    };
+extends layout 
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register
+    br 
+    a(href="/pen/update") Update 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/pen") Take me to Pen App 
+    br 
+    a(href="/logout") Logout 
