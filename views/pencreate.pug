@@ -6,7 +6,7 @@ block content
   form(id='PenForm', action="/resource/pen", method="POST") 
     div.form-group 
         label.penAttr(for='pName') Pen Name 
-        input#pName(type='text', name='pName') 
+        input#pName(type='text', name='pName',minlength="4",maxlength="11") 
     div.form-group 
         label.penAttr(for='pColor') Pen Color 
         input#pColor(type='text', name='pColor') 
