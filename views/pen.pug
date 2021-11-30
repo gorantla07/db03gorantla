@@ -2,7 +2,8 @@ extends layout
 
 block content
   h1= title
-  - let pens = results; 
+  - let pens = results;
+  button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/pen/create\")`) Create new Pen 
   table(class="table table-stripped table-bordered")
         thead(style="background-color:green; color:white") 
             tr
@@ -11,6 +12,8 @@ block content
                 td Pen Color 
                 td Pen Price
                 td Update 
+                td Details 
+                td Delete
         tbody 
             each pen in pens 
                 - let destination = `dispatch(\"/pen/update?id=${pen._id}\")`
@@ -21,6 +24,10 @@ block content
                     td #{pen.pPrice}
                     td
                       button.btn( class="btn-primary ml-1", onclick= destination) Update
+                    td
+                      button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/pen/detail?id=${pen._id}\")`) Detail
+                    td
+                      button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/pen/delete?id=${pen._id}\")`) Delete
                 script.
                     function dispatch(path){
                       window.location.href=path
